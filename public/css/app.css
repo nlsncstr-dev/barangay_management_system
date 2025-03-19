@@ -1,0 +1,59 @@
+body {
+    background-image: url('/images/barangay_hall.png');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    height: auto;
+    margin: 0;
+    padding: 0;
+
+}
+
+/* input design  */
+input:hover, select:hover {
+    border-color: black;
+    font-weight: bold;
+}
+
+input:hover::placeholder {
+    color: black;
+}
+
+input:-webkit-autofill {
+    background-color: transparent !important;
+    color: #333 !important; /* Adjust text color */
+    -webkit-box-shadow: 0 0 0px 1000px rgba(215, 192, 158, 0.5) inset !important; 
+    transition: background-color 5000s ease-in-out 0s; 
+}
+
+input:-webkit-autofill:hover,
+input:-webkit-autofill:focus,
+input:-webkit-autofill:active {
+    background-color: transparent !important;
+    -webkit-box-shadow: 0 0 0px 1000px rgba(215, 192, 158, 0.5) inset !important;
+    color: #333 !important;
+}
+
+.scroller{
+    scrollbar-width: thin;
+    scrollbar-color: brown transparent;
+}
+
+
+/* fade design  */
+.fade-in-top-delayed {
+    opacity: 0;
+    transform: translateY(-20px);
+    animation: fadeInTop 0.1s ease-out 1s forwards;
+}
+
+@keyframes fadeInTop {
+    0% {
+        opacity: 0;
+        transform: translateY(-20px);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
