@@ -11,7 +11,7 @@
             </h2>
           </div>
       </div>
-      <a href="/barangay" class="w-full px-3">
+      {{-- <a href="/barangay" class="w-full px-3">
        <div class="flex flex-row items-center w-full text-left group ">
           <div class="flex flex-row w-full space-x-2">
              <svg xmlns="http://www.w3.org/2000/svg" height="35px" viewBox="0 -960 960 960" width="35px" 
@@ -21,7 +21,7 @@
              </h1>
           </div>
        </div>
-      </a>
+      </a> --}}
    
       {{-- <a href="#" class=" w-full px-3">
           <div class="flex flex-row items-center w-full text-left group">

@@ -23,6 +23,7 @@ return new class extends Migration
             $table->enum('civil_status', ['single', 'married', 'widowed', 'separated']);
             $table->text('purpose')->nullable();
             $table->enum('status', ['pending', 'approved', 'rejected'])->default('pending');
+            $table->enum('certificate_type', ['barangay_clearance', 'barangay_certificate','business_clearance', 'residency_certificate', 'indigency_certificate']);
             $table->timestamp('approved_at')->nullable();
             $table->foreignId('approved_by')->nullable()->constrained('users')->onDelete('set null');
             $table->timestamps();
