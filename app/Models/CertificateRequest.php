@@ -20,5 +20,6 @@ class CertificateRequest extends Model
         'civil_status',
         'certificate_type',
         'purpose',
+        'status',
     ];
 }

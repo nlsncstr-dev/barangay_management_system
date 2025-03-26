@@ -13,12 +13,13 @@ return new class extends Migration
     {
         Schema::create('appointment_requests', function (Blueprint $table) {
             $table->id();
+            $table->string('reference_number', 4)->unique(); // Ensure uniqueness
             $table->string('first_name');
             $table->string('middle_name')->nullable();
             $table->string('last_name');
-            $table->string('contact_number')->nullable();
             $table->string('address');
-            $table->string('gender');
+            $table->string('contact_number')->nullable();
+            $table->enum('gender', ['male', 'female']);
             $table->enum('citizenship', ['filipino', 'others']);
             $table->enum('civil_status', ['single', 'married', 'widowed', 'separated']);
             $table->enum('status', ['pending', 'approved', 'rejected'])->default('pending');

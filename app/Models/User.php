@@ -18,12 +18,14 @@ class User extends Authenticatable
      * @var array<int, string>
      */
     protected $fillable = [
+        'name',
         'first_name',
         'middle_name',
         'last_name',
-        'username',
+        'email',
         'contact_number',
         'password',
+        'role'
     ];
 
     /**
@@ -45,4 +47,10 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
         'password' => 'hashed',
     ];
+
+    public function getNameAttribute(): string
+{
+    return $this->first_name . ' ' . $this->last_name;
+    }
+ 
 }

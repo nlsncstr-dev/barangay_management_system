@@ -14,7 +14,7 @@ class AppointmentRequestController extends Controller
 
     public function createAppointmentRequest(Request $request)
     {
-        $request->validate([
+        $validatedData = $request->validate([
             'first_name' => 'required|string|max:255',
             'middle_name' => 'nullable|string|max:255',
             'last_name' => 'required|string|max:255',
@@ -23,12 +23,21 @@ class AppointmentRequestController extends Controller
             'gender' => 'required|string|max:255',
             'citizenship' => 'required|string|max:255',
             'civil_status' => 'required|string|max:255',
-       
         ]);
 
-        AppointmentRequest::create($request->all());
+        $validatedData['reference_number'] = $this->generateUniqueReferenceNumber();
+        $appointmentRequest = AppointmentRequest::create($validatedData);
 
-        return redirect()->route('home');
+        return redirect()->route('home')->with('success', 'Your reference number is #'. $appointmentRequest->reference_number);
     }
+        private function generateUniqueReferenceNumber()
+        {
+            do {
+                $referenceNumber = mt_rand(1000, 9999); 
+            } while (AppointmentRequest::where('reference_number', $referenceNumber)->exists());
+        
+            return $referenceNumber;
+        }
+    
 
 }

@@ -7,7 +7,7 @@
         <h2 class="text-center text-xl font-bold">Login</h2>
         <form method="POST" action="{{ route('login.submit') }}" class="auth-form flex flex-col gap-3">
             @csrf
-            <input type="text" name="username" placeholder="Username" value="{{ old('username') }}" required class="bg-transparent border border-black/50 text-lg placeholder:font-bold placeholder:text-black/50 border-[4px] p-1 outline-none">
+            <input type="text" name="email" placeholder="email" value="{{ old('email') }}" required class="bg-transparent border border-black/50 text-lg placeholder:font-bold placeholder:text-black/50 border-[4px] p-1 outline-none">
             <input type="password" name="password" placeholder="Password" required class="bg-transparent border border-black/50 text-lg placeholder:font-bold placeholder:text-black/50 border-[4px] p-1">
             <button type="submit" class="bg-[#205C78] text-white p-2 rounded hover:bg-[#4994A4] outline-none">Login</button>
             <a href="{{ route('register.form') }}" class="text-[#C81E27] text-center">Don't have an account? Sign Up</a>

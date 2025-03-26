@@ -18,5 +18,7 @@ class AppointmentRequest extends Model
         'gender',
         'citizenship',
         'civil_status',
+        'status',
+        'reference_number'
     ];
 }

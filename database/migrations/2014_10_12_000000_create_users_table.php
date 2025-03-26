@@ -16,10 +16,10 @@ return new class extends Migration
             $table->string('first_name');
             $table->string('middle_name')->nullable();
             $table->string('last_name');
-            $table->string('username')->unique();
+            $table->string('email')->unique();
             $table->string('password')->nullable();
             $table->string('contact_number')->nullable();
-            $table->enum('role', ['resident', 'barangay_official', 'admin'])->default('resident');
+            $table->enum('role', ['resident', 'super_admin' ,'barangay_admin', 'clinic_admin'])->default('resident')->default('resident');
             $table->timestamps();
         });
     }

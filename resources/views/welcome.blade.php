@@ -6,7 +6,6 @@
 @include('components.navbar')
 
 <div class="p-5 backdrop-blur-[10px]">
-
     <div class="fade-in-top-delayed min-h-screen flex flex-col items-center justify-center p-10 bg-[rgba(215,192,158,0.7)] shadow-[0_5px_15px_rgba(0,0,0,0.35)] rounded-md gap-10 font-mono font-bold text-black/80 z-0">
         <div class="flex flex-col items-center text-center justify-center gap-5 lg:flex-row">
             <img class="w-80 h-80 object-cover " src="{{ asset('images/barangay_3.png') }}" alt="Picture of Barangay">
@@ -45,5 +44,19 @@
     </div> 
     
 </div>
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+<script>
+    document.addEventListener("DOMContentLoaded", function() {
+        @if(session('success'))
+        Swal.fire({
+            title: 'Success!',
+            html: '<br><strong style="font-size: 24px; color: green;">{{ session("success") }}</strong>',
+            icon: 'success',
+            confirmButtonText: 'OK'
+        });
+        @endif
+    });
+</script>
 
 @endsection
