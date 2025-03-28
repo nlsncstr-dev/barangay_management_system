@@ -32,17 +32,17 @@ class UserResource extends Resource
             Section::make('Register Details')->schema([
                 TextInput::make('first_name')
                 ->label('First Name')
-                ->columnSpan(2)
+                ->columnSpan(1)
                 ->required(),
 
                 TextInput::make('middle_name')
                 ->label('Middle Name')
-                ->columnSpan(2)
+                ->columnSpan(1)
                 ->required(),
 
                 TextInput::make('last_name')
                 ->label('Last Name')
-                ->columnSpan(2)
+                ->columnSpan(1)
                 ->required(),
 
                 TextInput::make('email')
@@ -57,17 +57,17 @@ class UserResource extends Resource
                     'barangay_admin' => 'Barangay Admin',
                     'clinic_admin' => 'Clinic Admin',
                 ])
-                ->columnSpan(2)
+                ->columnSpan(1)
                 ->required(),
 
                 TextInput::make('contact_number')
                 ->label('Contact Number')
-                ->columnSpan(2)
+                ->columnSpan(1)
                 ->required(),
 
                 TextInput::make('password')
                 ->password()
-                ->columnSpan(2)
+                ->columnSpan(1)
                 ->dehydrateStateUsing(fn ($state) => Hash::make($state))
                 ->dehydrated(fn ($state) => filled($state))
                 ->revealable()
@@ -82,11 +82,11 @@ class UserResource extends Resource
                 TextInput::make('password_confirmation')
                 ->label('Confirm Password')
                 ->password()
-                ->columnSpan(2)
+                ->columnSpan(1)
                 ->revealable()
                 ->required(fn (string $context): bool => $context === 'create'),
 
-            ])->columns(6),
+            ])->columns(3),
         ]);
     }
  
