@@ -10,6 +10,11 @@ class EditCertificateRequest extends EditRecord
 {
     protected static string $resource = CertificateRequestResource::class;
 
+    protected function getRedirectUrl(): string
+    {
+        return $this->getResource()::getUrl('index');
+    }
+
     protected function getHeaderActions(): array
     {
         return [

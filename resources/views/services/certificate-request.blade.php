@@ -6,7 +6,7 @@
 <div class="rounded-md gap-10 font-mono font-bold text-black/80 z-0 text-center p-6 sm:flex sm:justify-center sm:items-center h-100vh backdrop-blur-[10px]">
     <div class="scroller flex flex-col bg-[rgba(215,192,158,0.7)] shadow-[0_5px_15px_rgba(0,0,0,0.35)] p-10 gap-10 sm:w-[600px] sm:max-w-screen-xl mx-auto rounded-md">
         <h1 class="text-2xl">Certificate Request Form</h1>
-        <form method="POST" action="{{route('create.certificate-request')}}" class="auth-form">
+        <form method="POST" action="{{route('create.certificate-request')}}" enctype="multipart/form-data" class="auth-form">
             @csrf
             <div class="flex flex-col gap-10">
                 
@@ -78,8 +78,8 @@
                     <input class="bg-transparent border border-black/50 text-lg placeholder:font-bold placeholder:text-black/50 border-[4px] p-1" type="text" name="purpose" placeholder="Purpose (Optional)" value="{{ old('purpose') }}">
                 </div>
                 <div class="flex flex-col gap-5">
-                    <h2 class="border-gray-500 border-b-2 text-md">Identification Document If Any</h2>
-                    <input class="bg-transparent border border-black/50 text-lg font-bold text-black/50 border-[4px] p-1" type="file" name="supporting_documents" >
+                    <h2 class="border-gray-500 border-b-2 text-md">Valid ID Picture or Proof of Residency (If Any)</h2>
+                    <input class="bg-transparent border border-black/50 text-lg font-bold text-black/50 border-[4px] p-1" type="file" name="supporting_documents" required>
                 </div>
             <button class="text-2xl border border-[4px] border-black/50 hover:bg-black/50 hover:text-white hover:text-white">Submit</button>
 

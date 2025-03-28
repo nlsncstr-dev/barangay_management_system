@@ -9,4 +9,8 @@ use Filament\Resources\Pages\CreateRecord;
 class CreateCertificateRequest extends CreateRecord
 {
     protected static string $resource = CertificateRequestResource::class;
+    protected function getRedirectUrl(): string
+    {
+        return $this->getResource()::getUrl('index');
+    }
 }

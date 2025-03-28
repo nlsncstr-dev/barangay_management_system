@@ -10,6 +10,7 @@ use Filament\Actions\EditAction;
 use Filament\Facades\Filament;
 use Filament\Forms;
 use Filament\Forms\Components\DateTimePicker;
+use Filament\Forms\Components\FileUpload;
 use Filament\Forms\Components\Select;
 use Filament\Forms\Components\Textarea;
 use Filament\Forms\Components\TextInput;
@@ -21,6 +22,8 @@ use Filament\Tables\Columns\TextColumn;
 use Filament\Tables\Table;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\SoftDeletingScope;
+use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\HtmlString;
 
 class CertificateRequestResource extends Resource
 {
@@ -79,6 +82,28 @@ class CertificateRequestResource extends Resource
                         'indigency_certificate' => 'Indigency Certificate',
                     ])
                     ->required(),
+                FileUpload::make('supporting_documents')
+                    ->label('Valid ID Picture or Proof of Residency (If Any)')
+                    ->disk('public')
+                    ->directory('supporting_documents')
+                    ->acceptedFileTypes([
+                        'application/pdf', 
+                        'image/png', 
+                        'image/jpeg', 
+                        'image/jpg'
+                    ])
+                    ->maxSize(30000)
+                    ->visibility('public')
+                    ->preserveFilenames()
+                    ->downloadable()
+                    ->previewable(true)
+                    ->required()
+                    ->default(function ($record) {
+                        if ($record && $record->supporting_documents) {
+                            return str_replace(Storage::disk('public')->url(''), '', $record->pr_attachment()->link);
+                        }
+                        return null;
+                    })
                 
 
             ]);
@@ -111,6 +136,7 @@ class CertificateRequestResource extends Resource
                 TextColumn::make('purpose'),
                 TextColumn::make('certificate_type')
                 ->formatStateUsing(fn ($state) => ucwords(str_replace('_', ' ', $state))),
+        
 
          
             ])
@@ -118,6 +144,12 @@ class CertificateRequestResource extends Resource
                 //
             ])
             ->actions([
+                Action::make('supporting_documents')
+                ->label('View Document')
+                ->icon('heroicon-o-link')
+                ->color('primary')
+                ->url(fn ($record) => Storage::url($record->supporting_documents))
+                ->openUrlInNewTab(),
                 
                 Action::make('approve')
                     ->label('Approve')
@@ -129,7 +161,7 @@ class CertificateRequestResource extends Resource
 
             Tables\Actions\EditAction::make(), 
 
-               Tables\Actions\DeleteAction::make(),
+            Tables\Actions\DeleteAction::make(),
 
 
 
@@ -154,6 +186,7 @@ class CertificateRequestResource extends Resource
             'index' => Pages\ListCertificateRequests::route('/'),
             'create' => Pages\CreateCertificateRequest::route('/create'),
             'edit' => Pages\EditCertificateRequest::route('/{record}/edit'),
+            'view' => Pages\ViewCertificateRequest::route('/{record}'),
         ];
     }
     public static function canViewAny(): bool

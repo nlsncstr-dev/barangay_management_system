@@ -21,5 +21,6 @@ class CertificateRequest extends Model
         'certificate_type',
         'purpose',
         'status',
+        'supporting_documents',
     ];
 }
