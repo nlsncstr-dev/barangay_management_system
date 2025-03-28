@@ -10,8 +10,8 @@
         <div class="flex flex-col items-center text-center justify-center gap-5 lg:flex-row">
             <img class="w-80 h-80 object-cover " src="{{ asset('images/barangay_3.png') }}" alt="Picture of Barangay">
             <div class="flex flex-col gap-5">
-                <h1 class="text-center font-bold text-3xl">MISYON</h1>
-                <p class="text-justify text-center">
+                <h1 class="text-center font-bold text-7xl">MISYON</h1>
+                <p class="text-justify text-center text-5xl">
                     Mapaunlad ang antas ng pamumuhay at kalusugan ng mamamayan ng Baclaran.
                 </p> 
             </div>
@@ -20,20 +20,20 @@
         <div class="flex flex-col items-center text-center justify-center gap-5 lg:flex-row lg:flex-row-reverse">
             <img class="w-80 h-80 object-cover " src="{{ asset('images/barangay_2.png') }}" alt="Picture of Barangay">
             <div class="flex flex-col gap-5">
-                <h1 class="text-center font-bold text-3xl">PANANAW</h1>
-                <p class="text-justify text-center">
+                <h1 class="text-center font-bold text-7xl">PANANAW</h1>
+                <p class="text-justify text-center text-5xl">
                     Isang tahimik at maayos na pamayanan na nagkakaisa, na may pagkilala sa sarili, nay pananalig sa DIYOS, at may respeto sa KAPWA TAO at KALIKASAN.
                 </p> 
             </div>
         </div>
-        <div class="flex flex-col items-center text-center justify-center gap-5 text-3xl w-full max-w-screen-xl mx-auto overflow-auto">
+        {{-- <div class="flex flex-col items-center text-center justify-center gap-5 text-3xl w-full max-w-screen-xl mx-auto overflow-auto">
             <h1>Our Barangay</h1>
             <div class="flex flex-row space-x-5 justify-center overflow-x-auto">
                 <img class="w-72 h-72 object-cover" src="{{ asset('images/barangay_3.png') }}" alt="Picture of Barangay">
                 <img class="w-72 h-72 object-cover" src="{{ asset('images/barangay_4.png') }}" alt="Picture of Barangay">
                 <img class="w-72 h-72 object-cover" src="{{ asset('images/barangay_5.png') }}" alt="Picture of Barangay">
             </div>
-        </div>
+        </div> --}}
         
         
 
