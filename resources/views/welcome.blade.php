@@ -10,9 +10,9 @@
         <div class="flex flex-col items-center text-center justify-center gap-5 lg:flex-row">
             <img class="w-80 h-80 object-cover " src="{{ asset('images/barangay_3.png') }}" alt="Picture of Barangay">
             <div class="flex flex-col gap-5">
-                <h1 class="text-center font-bold text-3xl">PANANAW</h1>
+                <h1 class="text-center font-bold text-3xl">MISYON</h1>
                 <p class="text-justify text-center">
-                    Isang tahimik at maayos na pamayanan na nagkakaisa, na may pagkilala sa sarili, nay pananalig sa DIYOS, at may respeto sa KAPWA TAO at KALIKASAN.
+                    Mapaunlad ang antas ng pamumuhay at kalusugan ng mamamayan ng Baclaran.
                 </p> 
             </div>
         </div>
@@ -20,9 +20,9 @@
         <div class="flex flex-col items-center text-center justify-center gap-5 lg:flex-row lg:flex-row-reverse">
             <img class="w-80 h-80 object-cover " src="{{ asset('images/barangay_2.png') }}" alt="Picture of Barangay">
             <div class="flex flex-col gap-5">
-                <h1 class="text-center font-bold text-3xl">MISYON</h1>
+                <h1 class="text-center font-bold text-3xl">PANANAW</h1>
                 <p class="text-justify text-center">
-                    Mapaunlad ang antas ng pamumuhay at kalusugan ng mamamayan ng Baclaran.
+                    Isang tahimik at maayos na pamayanan na nagkakaisa, na may pagkilala sa sarili, nay pananalig sa DIYOS, at may respeto sa KAPWA TAO at KALIKASAN.
                 </p> 
             </div>
         </div>

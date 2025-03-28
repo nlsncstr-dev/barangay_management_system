@@ -7,6 +7,9 @@
     <link rel="stylesheet" href="{{ asset('css/app.css') }}">
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <link rel="icon" href="{{ asset('images/barangay_hall_logo.png') }}" type="image/png">
+
+    
     @livewireStyles
 </head>
 <body>
