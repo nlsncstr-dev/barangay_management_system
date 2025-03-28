@@ -17,7 +17,8 @@ use Filament\Tables\Table;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\SoftDeletingScope;
 use Illuminate\Support\Facades\Auth;
-
+use Illuminate\Validation\Rules\Password;
+use Illuminate\Support\Facades\Hash;
 class UserResource extends Resource
 {
     protected static ?string $model = User::class;
@@ -46,9 +47,9 @@ class UserResource extends Resource
 
                 TextInput::make('email')
                 ->label('Email')
-                ->columnSpan(2)
-                ->required()
-                ->unique('users', 'email'), 
+                ->columnSpan(1)
+                ->unique(ignoreRecord: true)
+                ->required(),
 
                 Select::make('role')
                 ->label('Role')
@@ -65,16 +66,25 @@ class UserResource extends Resource
                 ->required(),
 
                 TextInput::make('password')
-                ->label('Password')
-                ->columnSpan(2)
                 ->password()
-                ->required(),
+                ->columnSpan(2)
+                ->dehydrateStateUsing(fn ($state) => Hash::make($state))
+                ->dehydrated(fn ($state) => filled($state))
+                ->revealable()
+                ->rules([
+                    Password::min(8)
+                        ->letters()
+                        ->numbers(),
+                ])
+                ->confirmed()
+                ->required(fn (string $context): bool => $context === 'create'),
 
                 TextInput::make('password_confirmation')
-                ->label('Confirm Password')    
-                ->columnSpan(2)          
-                ->password()  
-                ->required(),
+                ->label('Confirm Password')
+                ->password()
+                ->columnSpan(2)
+                ->revealable()
+                ->required(fn (string $context): bool => $context === 'create'),
 
             ])->columns(6),
         ]);
