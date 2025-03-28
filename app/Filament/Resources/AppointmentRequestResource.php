@@ -7,6 +7,9 @@ use App\Filament\Resources\AppointmentRequestResource\RelationManagers;
 use App\Models\AppointmentRequest;
 use Filament\Forms;
 use Filament\Forms\Components\DateTimePicker;
+use Filament\Forms\Components\HasManyRepeater;
+use Filament\Forms\Components\Repeater;
+use Filament\Forms\Components\Section;
 use Filament\Forms\Components\Select;
 use Filament\Forms\Components\TextInput;
 use Filament\Forms\Form;
@@ -28,6 +31,7 @@ class AppointmentRequestResource extends Resource
     {
         return $form
             ->schema([
+                Section::make('Details')->schema([
                 TextInput::make('reference_number')
                 ->required()
                 ->maxLength(4)
@@ -50,8 +54,8 @@ class AppointmentRequestResource extends Resource
                     ->maxLength(255),
                 Select::make('gender')
                     ->options([
-                        'Male' => 'Male',
-                        'Female' => 'Female',
+                        'male' => 'Male',
+                        'female' => 'Female',
                     ])
                     ->required(),
                 Select::make('citizenship')
@@ -69,6 +73,29 @@ class AppointmentRequestResource extends Resource
                         'separated' => 'Separated',
                     ])
                     ->required(),
+                
+                    Repeater::make('familyMembers') 
+                    ->relationship('familyMembers')    
+                    ->schema([
+                        TextInput::make('first_name')
+                            ->required()
+                            ->maxLength(255)
+                            ->columnSpanFull(),
+                            
+                        TextInput::make('middle_name')
+                            ->maxLength(255)
+                            ->columnSpanFull(),
+                        TextInput::make('last_name')
+                            ->required()
+                            ->maxLength(255)
+                            ->columnSpanFull(),
+                    ])
+                    ->columns(2)
+                    ->columnSpan(2)
+                    ->addActionLabel('Add Particular'),
+
+
+                ])->columns(2),
          
             ]);
     }
@@ -103,6 +130,7 @@ class AppointmentRequestResource extends Resource
                 //
             ])
             ->actions([
+                Tables\Actions\ViewAction::make(),
                 Action::make('approve')
                 ->label('Approve')
                 ->color('success')

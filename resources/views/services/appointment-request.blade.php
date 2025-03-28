@@ -68,7 +68,38 @@
                             ▼
                         </span>
                     </div>
-                </div>
+                    <button type="button" onclick="addFamilyMember()" class="text-lg border border-[4px] border-black/50 hover:bg-black/50 hover:text-white hover:text-white">
+                     
+                        Add Family Member
+                    </button>
+                    
+                    
+                    <div id="family-members-container" class="space-y-4"></div>
+
+                    <template id="family-member-template">
+                        <div class="family-member flex flex-col gap-2 p-2" data-index="__index__">
+                            <input class="bg-transparent border border-black/50 text-lg placeholder:font-bold placeholder:text-black/50 border-[4px] p-1" type="text" name="family_members[__index__][first_name]" placeholder="First Name" required>
+                            <input class="bg-transparent border border-black/50 text-lg placeholder:font-bold placeholder:text-black/50 border-[4px] p-1" type="text" name="family_members[__index__][middle_name]" placeholder="Middle Name (Optional)">
+                            <input class="bg-transparent border border-black/50 text-lg placeholder:font-bold placeholder:text-black/50 border-[4px] p-1" type="text" name="family_members[__index__][last_name]" placeholder="Last Name" required>
+                            <button type="button" onclick="this.parentNode.remove()" class="text-red-500 mt-1 text-sm underline">Remove</button>
+                        </div>
+                    </template>
+                    
+                    <script>
+                        let familyMemberIndex = 0;
+                    
+                        function addFamilyMember() {
+                            const template = document.getElementById('family-member-template').innerHTML;
+                            const filledTemplate = template.replace(/__index__/g, familyMemberIndex);
+                            const div = document.createElement('div');
+                            div.innerHTML = filledTemplate;
+                            document.getElementById('family-members-container').appendChild(div.firstElementChild);
+                            familyMemberIndex++;
+                        }
+                    </script>
+                    
+                    
+                    
                 
             <button class="text-2xl border border-[4px] border-black/50 hover:bg-black/50 hover:text-white hover:text-white">Submit</button>
 

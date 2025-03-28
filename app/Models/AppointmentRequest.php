@@ -22,4 +22,10 @@ class AppointmentRequest extends Model
         'reference_number',
         'age',
     ];
+
+    public function familyMembers()
+    {
+        return $this->hasMany(Particulars::class);
+    }
+
 }

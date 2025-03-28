@@ -149,11 +149,15 @@ class CertificateRequestResource extends Resource
             ])
             ->actions([
                 Action::make('supporting_documents')
-                ->label('View Document')
+                ->label('View')
                 ->icon('heroicon-o-link')
                 ->color('primary')
-                ->url(fn ($record) => Storage::url($record->supporting_documents))
-                ->openUrlInNewTab(),
+                ->modalContent(fn ($record) => view('documents.view-modal', [
+                    'url' => Storage::url($record->supporting_documents)
+                ]))
+                ->modalSubmitAction(false)
+                ->modalCancelActionLabel('Close')
+                ->modalWidth('4xl'),
                 
                 Action::make('approve')
                     ->label('Approve')
@@ -189,7 +193,6 @@ class CertificateRequestResource extends Resource
             'index' => Pages\ListCertificateRequests::route('/'),
             'create' => Pages\CreateCertificateRequest::route('/create'),
             'edit' => Pages\EditCertificateRequest::route('/{record}/edit'),
-            'view' => Pages\ViewCertificateRequest::route('/{record}'),
         ];
     }
     public static function canViewAny(): bool

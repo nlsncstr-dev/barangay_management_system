@@ -18,6 +18,7 @@ class AppointmentRequestController extends Controller
             'first_name' => 'required|string|max:255',
             'middle_name' => 'nullable|string|max:255',
             'last_name' => 'required|string|max:255',
+            'age' => 'required|numeric|',
             'contact_number' => 'required|numeric|digits:11',
             'address' => 'required|string|max:255',
             'gender' => 'required|string|max:255',
@@ -27,6 +28,21 @@ class AppointmentRequestController extends Controller
 
         $validatedData['reference_number'] = $this->generateUniqueReferenceNumber();
         $appointmentRequest = AppointmentRequest::create($validatedData);
+
+         // Save family members if any
+         if ($request->has('family_members')) {
+            foreach ($request->family_members as $member) {
+                if (!isset($member['first_name'], $member['last_name'])) continue; // skip invalid
+        
+                $appointmentRequest->familyMembers()->create([
+                    'appointment_request_id' => $appointmentRequest->id,
+                    'first_name' => $member['first_name'],
+                    'middle_name' => $member['middle_name'] ?? null,
+                    'last_name'  => $member['last_name'],
+                ]);
+            }
+        }
+        
 
         return redirect()->route('home')->with('success', 'Your reference number is #'. $appointmentRequest->reference_number);
     }

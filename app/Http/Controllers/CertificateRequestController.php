@@ -26,6 +26,7 @@ class CertificateRequestController extends Controller
             'first_name' => 'required|string|max:255',
             'middle_name' => 'nullable|string|max:255',
             'last_name' => 'required|string|max:255',
+            'age' => 'required|numeric|',
             'contact_number' => 'required|numeric|digits:11',
             'address' => 'required|string|max:255',
             'gender' => 'required|string|max:255',
@@ -62,6 +63,6 @@ class CertificateRequestController extends Controller
             'supporting_documents' => $filePath, 
         ]);
 
-        return redirect()->route('home');
+        return redirect()->route('home')->with('success', 'Your certificate request has been submitted.');
     }
 }
