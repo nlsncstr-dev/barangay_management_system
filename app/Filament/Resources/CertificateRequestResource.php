@@ -160,7 +160,6 @@ class CertificateRequestResource extends Resource
                     ->hidden(fn ($record) => $record->status === 'approved'),
 
             Tables\Actions\EditAction::make(), 
-
             Tables\Actions\DeleteAction::make(),
 
 
