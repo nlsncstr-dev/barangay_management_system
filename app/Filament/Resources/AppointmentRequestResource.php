@@ -32,67 +32,67 @@ class AppointmentRequestResource extends Resource
         return $form
             ->schema([
                 Section::make('Details')->schema([
-                TextInput::make('reference_number')
-                ->required()
-                ->maxLength(4)
-                ->unique(ignoreRecord: true),
-                TextInput::make('first_name')
+                    TextInput::make('reference_number')
                     ->required()
-                    ->maxLength(255),
-                TextInput::make('middle_name')
-                    ->maxLength(255),
-                TextInput::make('last_name')
-                    ->required()
-                    ->maxLength(255),
-                TextInput::make('age')
-                    ->required()
-                    ->numeric(),
-                TextInput::make('contact_number')
-                    ->maxLength(255),
-                TextInput::make('address')
-                    ->required()
-                    ->maxLength(255),
-                Select::make('gender')
-                    ->options([
-                        'male' => 'Male',
-                        'female' => 'Female',
-                    ])
-                    ->required(),
-                Select::make('citizenship')
-                    ->options([
-                        'filipino' => 'Filipino',
-                        'others' => 'Others',
-                    ])
-                    ->required(),
+                    ->maxLength(4)
+                    ->unique(ignoreRecord: true),
+                    TextInput::make('first_name')
+                        ->required()
+                        ->maxLength(255),
+                    TextInput::make('middle_name')
+                        ->maxLength(255),
+                    TextInput::make('last_name')
+                        ->required()
+                        ->maxLength(255),
+                    TextInput::make('age')
+                        ->required()
+                        ->numeric(),
+                    TextInput::make('contact_number')
+                        ->maxLength(255),
+                    TextInput::make('address')
+                        ->required()
+                        ->maxLength(255),
+                    Select::make('gender')
+                        ->options([
+                            'male' => 'Male',
+                            'female' => 'Female',
+                        ])
+                        ->required(),
+                    Select::make('citizenship')
+                        ->options([
+                            'filipino' => 'Filipino',
+                            'others' => 'Others',
+                        ])
+                        ->required(),
 
-                Select::make('civil_status')
-                    ->options([
-                        'single' => 'Single',
-                        'married' => 'Married',
-                        'widowed' => 'Widowed',
-                        'separated' => 'Separated',
-                    ])
-                    ->required(),
-                
-                    Repeater::make('familyMembers') 
-                    ->relationship('familyMembers')    
-                    ->schema([
-                        TextInput::make('first_name')
-                            ->required()
-                            ->maxLength(255)
-                            ->columnSpanFull(),
-                            
-                        TextInput::make('middle_name')
-                            ->maxLength(255)
-                            ->columnSpanFull(),
-                        TextInput::make('last_name')
-                            ->required()
-                            ->maxLength(255)
-                            ->columnSpanFull(),
-                    ])
-                    ->columns(2)
-                    ->columnSpan(2)
-                    ->addActionLabel('Add Particular'),
+                    Select::make('civil_status')
+                        ->options([
+                            'single' => 'Single',
+                            'married' => 'Married',
+                            'widowed' => 'Widowed',
+                            'separated' => 'Separated',
+                        ])
+                        ->required(),
+                    
+                        Repeater::make('familyMembers') 
+                        ->relationship('familyMembers')    
+                        ->schema([
+                            TextInput::make('first_name')
+                                ->required()
+                                ->maxLength(255)
+                                ->columnSpanFull(),
+                                
+                            TextInput::make('middle_name')
+                                ->maxLength(255)
+                                ->columnSpanFull(),
+                            TextInput::make('last_name')
+                                ->required()
+                                ->maxLength(255)
+                                ->columnSpanFull(),
+                        ])
+                        ->columns(2)
+                        ->columnSpan(2)
+                        ->addActionLabel('Add Member'),
 
 
                 ])->columns(2),
