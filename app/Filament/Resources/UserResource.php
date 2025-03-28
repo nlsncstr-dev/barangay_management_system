@@ -19,6 +19,7 @@ use Illuminate\Database\Eloquent\SoftDeletingScope;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Validation\Rules\Password;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Str;
 class UserResource extends Resource
 {
     protected static ?string $model = User::class;
@@ -121,7 +122,8 @@ class UserResource extends Resource
             ->label('Contact Number'),
 
             TextColumn::make('role')
-            ->label('Role'),
+            ->label('Role')
+            ->formatStateUsing(fn($state) => Str::of($state)->replace('_', ' ')->title()),
         ])
            
             ->actions([
