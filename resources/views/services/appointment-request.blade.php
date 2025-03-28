@@ -13,10 +13,21 @@
                 <div class="flex flex-col gap-5">
                     <h2 class=" border-gray-500 border-b-2 text-md">Basic Information</h2>
                     <input class="bg-transparent border border-black/50 text-lg placeholder:font-bold placeholder:text-black/50 border-[4px] p-1" type="text" name="first_name" placeholder="First Name" value="{{ old('first_name') }}" required>
-           
+                    
                     <input class="bg-transparent border border-black/50 text-lg placeholder:font-bold placeholder:text-black/50 border-[4px] p-1" type="text" name="middle_name" placeholder="Middle Name (Optional)" value="{{ old('middle_name') }}">
                     <input class="bg-transparent border border-black/50 text-lg placeholder:font-bold placeholder:text-black/50 border-[4px] p-1" type="text" name="last_name" placeholder="Last Name" value="{{ old('last_name') }}" required>
-                    <input class="bg-transparent border border-black/50 text-lg placeholder:font-bold placeholder:text-black/50 border-[4px] p-1" type="text" name="contact_number" placeholder="Contact Number" value="{{ old('contact_number') }}" required>
+                    <input class="bg-transparent border border-black/50 text-lg placeholder:font-bold placeholder:text-black/50 border-[4px] p-1" type="number" name="age" placeholder="Age" value="{{ old('age') }}" required>
+                    <input 
+                    class="bg-transparent border border-black/50 text-lg placeholder:font-bold placeholder:text-black/50 border-[4px] p-1" 
+                    type="text" 
+                    name="contact_number" 
+                    placeholder="Contact Number" 
+                    value="{{ old('contact_number') }}" 
+                    maxlength="11" 
+                    pattern="\d{11}" 
+                    inputmode="numeric" 
+                    required
+                    >
                     <input class="bg-transparent border border-black/50 text-lg placeholder:font-bold placeholder:text-black/50 border-[4px] p-1" type="text" name="address" placeholder="Address" value="{{ old('address') }}" required>
                     <div class="relative inline-block">
                         <select 
@@ -28,10 +39,6 @@
                             <option value="female" class="bg-[rgba(215,192,158,0.5)]" {{ old('gender') == 'female' ? 'selected' : '' }}>Female</option>
                             <option value="others" class="bg-[rgba(215,192,158,0.5)]" {{ old('gender') == 'others' ? 'selected' : '' }}>Others</option>
                         </select>
-                        @error('gender')
-                        <p class="text-red-500 text-sm">{{ $message }}</p>
-                        @enderror
-
                         <span class="absolute right-3 top-1/2 -translate-y-1/2 pointer-events-none text-black/50">
                             ▼
                         </span>

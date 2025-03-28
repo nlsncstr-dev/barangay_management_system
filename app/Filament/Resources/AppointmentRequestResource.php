@@ -31,7 +31,7 @@ class AppointmentRequestResource extends Resource
                 TextInput::make('reference_number')
                 ->required()
                 ->maxLength(4)
-                ->unique('appointment_requests', 'reference_number'),
+                ->unique(ignoreRecord: true),
                 TextInput::make('first_name')
                     ->required()
                     ->maxLength(255),
@@ -40,6 +40,9 @@ class AppointmentRequestResource extends Resource
                 TextInput::make('last_name')
                     ->required()
                     ->maxLength(255),
+                TextInput::make('age')
+                    ->required()
+                    ->numeric(),
                 TextInput::make('contact_number')
                     ->maxLength(255),
                 TextInput::make('address')
@@ -87,8 +90,7 @@ class AppointmentRequestResource extends Resource
                     ->searchable(),
                 TextColumn::make('contact_number')
                     ->searchable(),
-                TextColumn::make('address')
-                    ->searchable(),
+                TextColumn::make('age'),
                 TextColumn::make('gender'),
                 TextColumn::make('citizenship'),
                 TextColumn::make('civil_status'),

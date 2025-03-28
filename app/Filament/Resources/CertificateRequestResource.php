@@ -43,6 +43,9 @@ class CertificateRequestResource extends Resource
                 TextInput::make('last_name')
                     ->required()
                     ->maxLength(255),
+                TextInput::make('age')
+                    ->required()
+                    ->numeric(),
                 TextInput::make('contact_number')
                     ->required()
                     ->maxLength(255),
@@ -122,6 +125,7 @@ class CertificateRequestResource extends Resource
                     ->searchable(),
                 TextColumn::make('last_name')
                     ->searchable(),
+                TextColumn::make('age'),
                 TextColumn::make('contact_number')
                     ->searchable(),
                 TextColumn::make('address')

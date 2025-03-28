@@ -1,6 +1,6 @@
 <nav class="bg-[rgba(215,192,158,0.2)] backdrop-blur-lg shadow-lg flex items-center justify-center flex-col sm:justify-between p-6 font-mono top-0 z-10 sticky hover:border-black/80 hover:border-2 hover:shadow-[0_0_20px_rgba(0,0,0,0.8)] transition-shadow duration-300 w-full">
     <div class="flex items-center space-x-2 overflow-hidden sm:w-[585px] w-[300px] justify-center py-2">
-        <img src="{{ asset('images/barangay_hall.svg') }}" 
+        <img src="{{ asset('images/barangay_hall_logo.png') }}" 
              alt="Barangay Icon" 
              class="sm:w-20 sm:h-20 flex-shrink-0 w-8 h-8" />
         
@@ -55,19 +55,20 @@
     
         <!-- Services Dropdown -->
         <div class="relative group inline-block z-99">
-            <h1 href="#"
+            <a href="#"
                 class="relative inline-block py-2 text-lg font-semibold 
-                       overflow-hidden rounded-md shadow-md font-mono border border-black/80 border-2 w-[200px] text-center items-center z-10">
-                 
-                 <span class="absolute inset-0 bg-black transition-transform 
-                              duration-500 ease-out scale-x-0 group-hover:scale-x-100 
-                              origin-left"></span>
-                 
-                 <span class="relative text-black transition-colors duration-300 
-                              group-hover:text-white">
-                     Services
-                 </span>
-            </h1>
+                    overflow-hidden rounded-md shadow-md font-mono border border-black/80 border-2 w-[200px] text-center items-center z-10 group">
+            
+                <span class="absolute inset-0 bg-black transition-transform 
+                            duration-500 ease-out scale-x-0 group-hover:scale-x-100 
+                            origin-left"></span>
+            
+                <span class="relative text-black transition-colors duration-300 
+                            group-hover:text-white">
+                    Services
+                </span>
+            </a>
+         
     
             <!-- Dropdown Menu -->
             <div class="absolute left-0 hidden bg-white border border-gray-200 
